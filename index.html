@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل مناسبة فرصة جديدة لانتشار Party Balloon | Party Balloon × KAAF Group</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cairo & IBM Plex Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kaaf: {
+                            blue: '#0A4C86',
+                            blueLight: '#1C75C8',
+                            blueDeep: '#05233E',
+                            blueDarkest: '#031424',
+                            green: '#00875A',
+                            greenLight: '#00B377',
+                            greenDeep: '#023824',
+                            gold: '#D4AF37',
+                            goldLight: '#F5DE88',
+                            goldDark: '#A6821E',
+                            purple: '#7C3AED',
+                            purpleLight: '#A78BFA',
+                            rose: '#E11D48',
+                            roseLight: '#FB7185',
+                            pinkBalloon: '#FF4081',
+                            pinkBalloonLight: '#FF80AB',
+                            cyan: '#06B6D4',
+                            cyanLight: '#67E8F9',
+                            amber: '#F59E0B',
+                            dark: '#030812',
+                            darkSlate: '#081220',
+                            cardBg: '#0B1A2E',
+                            border: '#1B314B'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        ibm: ['IBM Plex Sans Arabic', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 35px -5px rgba(10, 76, 134, 0.6)',
+                        'glow-gold': '0 0 35px -5px rgba(212, 175, 55, 0.55)',
+                        'glow-pink': '0 0 35px -5px rgba(255, 64, 129, 0.55)',
+                        'glow-purple': '0 0 35px -5px rgba(124, 58, 237, 0.6)',
+                        'glow-green': '0 0 35px -5px rgba(0, 135, 90, 0.6)',
+                        'web-card': '0 20px 45px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+            background-color: #030812;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #interactive-bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.65;
+        }
+
+        .kaaf-ribbon {
+            background: linear-gradient(90deg, 
+                #0A4C86 0%, 
+                #06B6D4 18%, 
+                #00875A 36%, 
+                #D4AF37 54%, 
+                #FF4081 72%, 
+                #7C3AED 100%
+            );
+            height: 4px;
+        }
+
+        .web-card-blue {
+            background: linear-gradient(135deg, rgba(10, 30, 56, 0.85) 0%, rgba(5, 16, 32, 0.95) 100%);
+            border: 1px solid rgba(28, 117, 200, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-blue:hover {
+            border-color: rgba(28, 117, 200, 0.75);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px -10px rgba(10, 76, 134, 0.5);
+        }
+
+        .web-card-gold {
+            background: linear-gradient(135deg, rgba(45, 36, 15, 0.85) 0%, rgba(18, 14, 5, 0.95) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-gold:hover {
+            border-color: rgba(212, 175, 55, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px -10px rgba(212, 175, 55, 0.5);
+        }
+
+        .web-card-pink {
+            background: linear-gradient(135deg, rgba(48, 14, 32, 0.85) 0%, rgba(22, 6, 15, 0.95) 100%);
+            border: 1px solid rgba(255, 64, 129, 0.4);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-pink:hover {
+            border-color: rgba(255, 64, 129, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px -10px rgba(255, 64, 129, 0.5);
+        }
+
+        .web-card-purple {
+            background: linear-gradient(135deg, rgba(30, 18, 54, 0.85) 0%, rgba(14, 8, 28, 0.95) 100%);
+            border: 1px solid rgba(167, 139, 250, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-purple:hover {
+            border-color: rgba(167, 139, 250, 0.75);
+            box-shadow: 0 16px 35px -10px rgba(124, 58, 237, 0.5);
+        }
+
+        .web-card-green {
+            background: linear-gradient(135deg, rgba(8, 38, 28, 0.85) 0%, rgba(4, 20, 15, 0.95) 100%);
+            border: 1px solid rgba(0, 179, 119, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-green:hover {
+            border-color: rgba(0, 179, 119, 0.75);
+            box-shadow: 0 16px 35px -10px rgba(0, 135, 90, 0.5);
+        }
+
+        .web-card-cyan {
+            background: linear-gradient(135deg, rgba(8, 36, 48, 0.85) 0%, rgba(4, 18, 26, 0.95) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-cyan:hover {
+            border-color: rgba(6, 182, 212, 0.75);
+            box-shadow: 0 16px 35px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        @keyframes float-brand {
+            0%, 100% { transform: translateY(0px); box-shadow: 0 10px 25px -5px rgba(10, 76, 134, 0.6); }
+            50% { transform: translateY(-7px); box-shadow: 0 18px 30px -5px rgba(10, 76, 134, 0.8); }
+        }
+        @keyframes float-wa {
+            0%, 100% { transform: translateY(0px) scale(1); box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5); }
+            50% { transform: translateY(-7px) scale(1.03); box-shadow: 0 18px 30px -5px rgba(37, 211, 102, 0.8); }
+        }
+
+        .anim-float-brand { animation: float-brand 4s ease-in-out infinite; }
+        .anim-float-wa { animation: float-wa 4s ease-in-out infinite 0.5s; }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @media print {
+            body { background-color: #fff !important; color: #111 !important; }
+            #interactive-bg-canvas, aside, header, #floating-kaaf-btn, #floating-wa-btn { display: none !important; }
+            .web-card-blue, .web-card-gold, .web-card-pink, .web-card-green, .web-card-purple, .web-card-cyan {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+                box-shadow: none !important;
+            }
+            .text-white { color: #0f172a !important; }
+            .text-gray-200, .text-gray-300, .text-gray-400 { color: #334155 !important; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-kaaf-pinkBalloon selection:text-white">
+
+    <!-- Interactive Ambient Canvas Layer -->
+    <canvas id="interactive-bg-canvas"></canvas>
+
+    <!-- Floating Brand Logo (Bottom Left) -->
+    <aside id="floating-kaaf-btn" class="fixed bottom-6 left-6 z-50">
+        <a href="https://kaafmarketing.sa/" target="_blank" rel="noopener noreferrer" title="مجموعة كاف | KAAF Group" class="block w-14 h-14 rounded-full overflow-hidden border-2 border-kaaf-cyanLight/80 p-0.5 bg-black/90 anim-float-brand transition-all hover:scale-110 group backdrop-blur-md">
+            <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+        </a>
+    </aside>
+
+    <!-- Floating WhatsApp CTA (Bottom Right) -->
+    <aside id="floating-wa-btn" class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/966537553910" target="_blank" rel="noopener noreferrer" title="التواصل المباشر مع استشاري التسويق بالمؤثرين (+966 53 755 3910)" class="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center border-2 border-emerald-200/80 anim-float-wa transition-all hover:scale-110 shadow-lg">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+        </a>
+    </aside>
+
+    <!-- Document Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-kaaf-dark/90 backdrop-blur-xl border-b border-kaaf-border/70 px-4 lg:px-12 py-3.5 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo & Identity (Right in RTL) -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-2xl overflow-hidden border border-kaaf-blueLight/50 p-0.5 bg-black shrink-0 shadow-glow-blue">
+                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-base font-black text-white tracking-wide font-ibm">KAAF Group</span>
+                        <span class="px-2 py-0.5 rounded-full bg-kaaf-pinkBalloon/20 text-kaaf-pinkBalloonLight text-[10px] font-extrabold border border-kaaf-pinkBalloon/40">عرض خاص: Party Balloon</span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 font-medium">حملة المؤثرين • 20 مشهوراً عبر 5 مواسم احتفالية</p>
+                </div>
+            </div>
+
+            <!-- Anchor Links -->
+            <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-gray-300">
+                <a href="#opportunity" class="nav-link hover:text-white">فرص المواسم</a>
+                <a href="#platform" class="nav-link hover:text-white">منصة الـ 7,000 مشهور</a>
+                <a href="#criteria" class="nav-link hover:text-white">معايير الاختيار</a>
+                <a href="#strategy" class="nav-link hover:text-white text-kaaf-pinkBalloonLight"><i class="fa-solid fa-wand-magic-sparkles text-xs ml-1"></i> توزيع الـ 20 مشهوراً</a>
+                <a href="#funnel" class="nav-link hover:text-white">دورة التأثير</a>
+                <a href="#guarantees" class="nav-link hover:text-white">الضمانات وحماية الاستثمار</a>
+                <a href="#pricing" class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-kaaf-pinkBalloon to-kaaf-gold text-slate-950 font-black hover:brightness-110 shadow-sm transition">باقة المشاهير (7,000 SAR)</a>
+            </nav>
+
+            <!-- WhatsApp Action Button (Left in RTL) -->
+            <div class="flex items-center gap-2 order-last">
+                <a href="https://wa.me/966537553910" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>تواصل معنا</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Document Content Container -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+        <!-- ========================================================================= -->
+        <!-- 00 — PROPOSAL HERO BANNER / COVER                                         -->
+        <!-- ========================================================================= -->
+        <section class="relative rounded-[32px] overflow-hidden p-8 sm:p-14 lg:p-16 bg-gradient-to-br from-kaaf-blueDeep/95 via-kaaf-darkSlate/95 to-kaaf-dark/95 border border-kaaf-pinkBalloon/40 shadow-web-card text-white backdrop-blur-lg">
+            <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kaaf-pinkBalloon/20 border border-kaaf-pinkBalloon/40 text-kaaf-pinkBalloonLight text-xs font-bold font-ibm">
+                        <i class="fa-solid fa-sparkles text-kaaf-gold"></i>
+                        <span>Influencer Marketing Campaign | خطة تسويقية متكاملة عبر منصة المشاهير</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span class="text-xs sm:text-sm font-bold text-gray-400 block tracking-wider uppercase font-ibm">Celebration & Event Staging Marketing Architecture</span>
+                        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+                            كل مناسبة فرصة جديدة لانتشار <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-l from-kaaf-pinkBalloon via-rose-300 to-kaaf-goldLight font-ibm">
+                                Party Balloon – بارتي بالون
+                            </span>
+                        </h1>
+                        <p class="text-sm sm:text-base font-bold text-pink-100/90 font-cairo leading-relaxed max-w-3xl border-r-4 border-kaaf-pinkBalloon pr-4 py-1 bg-kaaf-blueDeep/40 rounded-l-2xl">
+                            خطة تسويقية عبر المؤثرين لاستثمار المواسم والمناسبات القادمة، وتعزيز انتشار البراند، والوصول إلى جمهور مهتم بخدمات تجهيز الحفلات والمناسبات الخاصة في مختلف مناطق المملكة العربية السعودية.
+                        </p>
+                    </div>
+
+                    <!-- Meta Tags -->
+                    <div class="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3 rounded-2xl bg-black/60 border border-white/10">
+                            <span class="text-gray-400 block text-[11px]">مقدم العرض</span>
+                            <span class="font-black text-white font-ibm">KAAF Group</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-kaaf-pinkBalloon/40">
+                            <span class="text-gray-400 block text-[11px]">الجهة المستهدفة</span>
+                            <span class="font-black text-kaaf-pinkBalloonLight font-ibm">Party Balloon</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-white/10">
+                            <span class="text-gray-400 block text-[11px]">حجم شبكة المؤثرين</span>
+                            <span class="font-black text-kaaf-cyanLight">+7,000 مشهور بالمملكة</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-kaaf-gold/40">
+                            <span class="text-gray-400 block text-[11px]">نطاق الحملة</span>
+                            <span class="font-black text-kaaf-goldLight">20 مشهوراً / 5 مواسم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dual Brand Presentation Box with User's Client Logo -->
+                <div class="lg:col-span-4 flex justify-center">
+                    <div class="w-full space-y-4 p-6 rounded-3xl bg-kaaf-cardBg/90 border border-kaaf-pinkBalloon/40 shadow-2xl backdrop-blur-md">
+                        <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                            <span class="text-xs font-black text-white flex items-center gap-2">
+                                <i class="fa-solid fa-champagne-glasses text-kaaf-gold"></i>
+                                <span>شراكة الانتشار وصناعة البهجة</span>
+                            </span>
+                            <span class="text-[10px] text-kaaf-pinkBalloon font-mono font-bold">INFLUENCERS</span>
+                        </div>
+
+                        <!-- Brand Logos Container -->
+                        <div class="p-4 rounded-2xl bg-black/70 border border-white/10 flex items-center justify-around gap-3">
+                            <div class="text-center space-y-1">
+                                <div class="w-14 h-14 rounded-2xl overflow-hidden border border-kaaf-blueLight/50 p-0.5 bg-black mx-auto shadow-md">
+                                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-400 block">KAAF Group</span>
+                            </div>
+                            <div class="text-kaaf-pinkBalloon text-lg font-mono font-bold">✕</div>
+                            <div class="text-center space-y-1">
+                                <div class="w-14 h-14 rounded-2xl overflow-hidden border border-kaaf-pinkBalloon/50 p-0.5 bg-white mx-auto shadow-md flex items-center justify-center">
+                                    <img src="https://i.ibb.co/1YYhK87W/245013342-302427914654159-2285486762780724574-n.jpg" alt="Party Balloon Logo" class="w-full h-full object-contain rounded-xl" onerror="this.parentElement.innerHTML='<div class=\'text-[10px] font-black text-slate-900\'>Party Balloon</div>'">
+                                </div>
+                                <span class="text-[10px] font-bold text-kaaf-pinkBalloonLight block font-ibm">Party Balloon</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-gray-300">
+                            <div class="p-2.5 rounded-xl bg-kaaf-pinkBalloon/15 border border-kaaf-pinkBalloon/30 space-y-0.5">
+                                <span class="font-bold text-kaaf-pinkBalloonLight flex items-center gap-1.5">
+                                    <i class="fa-solid fa-cake-candles text-kaaf-pinkBalloon"></i>
+                                    تغطية احتفالية متعددة المواسم
+                                </span>
+                                <p class="text-[11px] text-gray-300">الجمعة البيضاء • نهاية العام • يوم التأسيس • رمضان • عيد الفطر.</p>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-kaaf-gold/15 border border-kaaf-gold/30 space-y-0.5">
+                                <span class="font-bold text-kaaf-goldLight flex items-center gap-1.5">
+                                    <i class="fa-solid fa-tag text-kaaf-gold"></i>
+                                    باقة شاملة 20 مشهوراً
+                                </span>
+                                <p class="text-[11px] text-gray-300">استثمار إجمالي مقنن بقيمة 7,000 ريال سعودي لكامل الحملة.</p>
+                            </div>
+                        </div>
+
+                        <a href="#pricing" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-kaaf-pinkBalloon to-kaaf-gold text-slate-950 font-black text-xs text-center block hover:brightness-110 transition shadow-md">
+                            استعراض باقة المشاهير (7,000 SAR)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 01 — SEASONAL OPPORTUNITIES TIMELINE                                      -->
+        <!-- ========================================================================= -->
+        <section id="opportunity" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-pinkBalloon/20 text-kaaf-pinkBalloonLight font-black text-xs border border-kaaf-pinkBalloon/40 flex items-center gap-1.5">
+                    <i class="fa-solid fa-calendar-star text-[11px]"></i>
+                    <span>أولاً • الفرصة الذهبية</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-gifts text-kaaf-pinkBalloon text-xl"></i>
+                    <span>لماذا Party Balloon أمامه فرصة تسويقية كبيرة خلال الفترة القادمة؟</span>
+                </h2>
+            </div>
+
+            <div class="web-card-pink rounded-3xl p-6 sm:p-10 space-y-8 border-2 border-kaaf-pinkBalloon/40 shadow-web-card">
+                <div class="flex items-center gap-3 pb-3 border-b border-kaaf-pinkBalloon/30 text-kaaf-pinkBalloonLight font-bold text-sm">
+                    <div class="w-9 h-9 rounded-xl bg-kaaf-pinkBalloon/20 flex items-center justify-center text-kaaf-pinkBalloon">
+                        <i class="fa-solid fa-bullseye text-base"></i>
+                    </div>
+                    <span>ميزة تتابع المواسم: اختلاف المناسبات يعني تعدد فرص الظهور والحجوزات</span>
+                </div>
+
+                <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
+                    إن طبيعة نشاط <strong>Party Balloon</strong> المتخصص في تجهيز الحفلات، أعياد الميلاد، التخرج، استقبال المواليد، والمناسبات العائلية تمنحه <strong>ميزة تسويقية وتنافسية استثنائية</strong> في السوق السعودي، وهي التنوع والتتابع المستمر للمناسبات والاحتفالات التي يحتاج فيها الجمهور إلى باقات البالونات والديكورات المميزة.
+                </p>
+
+                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                    خلال الفترة القادمة، تتوالى مجموعة من المواسم الوطنية والاجتماعية والتسويقية الكبرى التي تمثل فرصاً ذهبية متتالية؛ فبدلاً من أن يظهر البراند في حملة واحدة عابرة، تتيح هذه الاستراتيجية <strong>بناء حضور متكرر خلال عدة مناسبات</strong>، مما يرسخ تذكر العلامة التجارية ويضاعف الاستفسارات والحجوزات.
+                </p>
+
+                <!-- Visual Timeline of 5 Consecutive Seasons -->
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                        <span class="text-xs font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-timeline text-kaaf-gold"></i>
+                            <span>تتابع المواسم والفرص التسويقية لـ Party Balloon (Timeline):</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-kaaf-pinkBalloonLight">5 Major Seasons</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                        <!-- Season 1 -->
+                        <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-blue/50 space-y-3 hover:border-kaaf-cyan transition flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-mono font-bold text-kaaf-cyanLight px-2 py-0.5 rounded-full bg-kaaf-blue/30 border border-kaaf-blue/50">الموسم 01</span>
+                                    <i class="fa-solid fa-tag text-kaaf-cyanLight"></i>
+                                </div>
+                                <h4 class="text-sm font-black text-white">الجمعة البيضاء – White Friday</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    فرصة لتقديم عروض ترويجية خاصة على باقات تجهيز الحفلات، وتحفيز العملاء على الحجز المبكر وزيادة الوعي بالبراند.
+                                </p>
+                            </div>
+                            <div class="text-[10px] text-kaaf-cyanLight font-bold pt-2 border-t border-white/10">عروض وباقات خاصة</div>
+                        </div>
+
+                        <!-- Season 2 -->
+                        <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-pinkBalloon/50 space-y-3 hover:border-kaaf-pinkBalloon transition flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-mono font-bold text-kaaf-pinkBalloonLight px-2 py-0.5 rounded-full bg-kaaf-pinkBalloon/20 border border-kaaf-pinkBalloon/40">الموسم 02</span>
+                                    <i class="fa-solid fa-champagne-glasses text-kaaf-pinkBalloon"></i>
+                                </div>
+                                <h4 class="text-sm font-black text-white">احتفالات نهاية العام – New Year</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    فترة حافلة بالتجمعات العائلية والاحتفالات الخاصة وتجهيز ديكورات الأجواء الاحتفالية الراقية للمنازل والاستراحات.
+                                </p>
+                            </div>
+                            <div class="text-[10px] text-kaaf-pinkBalloonLight font-bold pt-2 border-t border-white/10">تجمعات وديكورات خاصة</div>
+                        </div>
+
+                        <!-- Season 3 -->
+                        <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-gold/50 space-y-3 hover:border-kaaf-gold transition flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-mono font-bold text-kaaf-gold px-2 py-0.5 rounded-full bg-kaaf-amber/30 border border-kaaf-amber/50">الموسم 03</span>
+                                    <i class="fa-solid fa-flag text-kaaf-gold"></i>
+                                </div>
+                                <h4 class="text-sm font-black text-white">يوم التأسيس السعودي – Founding Day</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    تقديم أفكار وتجهيزات بالونات مستوحاة من الهوية والتراث السعودي، واستهداف المنشآت والمدارس والعائلات المحتفلة.
+                                </p>
+                            </div>
+                            <div class="text-[10px] text-kaaf-gold font-bold pt-2 border-t border-white/10">أجواء وهوية وطنية</div>
+                        </div>
+
+                        <!-- Season 4 -->
+                        <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/50 space-y-3 hover:border-kaaf-purpleLight transition flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-mono font-bold text-kaaf-purpleLight px-2 py-0.5 rounded-full bg-kaaf-purple/30 border border-kaaf-purple/50">الموسم 04</span>
+                                    <i class="fa-solid fa-moon text-kaaf-purpleLight"></i>
+                                </div>
+                                <h4 class="text-sm font-black text-white">شهر رمضان المبارك – Ramadan</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    موسم مليء بالغبقات الرمضانية، والزيارات، والتجمعات العائلية، مع إبراز تجهيزات وديكورات الاستقبال الفاخرة.
+                                </p>
+                            </div>
+                            <div class="text-[10px] text-kaaf-purpleLight font-bold pt-2 border-t border-white/10">غبقات واستقبالات رمضانية</div>
+                        </div>
+
+                        <!-- Season 5 -->
+                        <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-emerald-500/50 space-y-3 hover:border-emerald-400 transition flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-mono font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-900/30 border border-emerald-500/40">الموسم 05</span>
+                                    <i class="fa-solid fa-gifts text-emerald-400"></i>
+                                </div>
+                                <h4 class="text-sm font-black text-white">عيد الفطر المبارك – Eid Al-Fitr</h4>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    ذروة طلبات الاحتفال بالعيد وتجهيز هدايا وبالونات الأطفال والفعاليات العائلية واللقاءات الاجتماعية المميزة.
+                                </p>
+                            </div>
+                            <div class="text-[10px] text-emerald-400 font-bold pt-2 border-t border-white/10">فرحة العيد والفعاليات</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Summary Quote -->
+                <div class="p-4 rounded-2xl bg-black/75 border border-kaaf-gold/40 text-xs sm:text-sm text-amber-100 flex items-center gap-3">
+                    <i class="fa-solid fa-quote-right text-kaaf-gold text-xl shrink-0"></i>
+                    <span><strong>الرسالة الاستراتيجية الأساسية:</strong> اختلاف المناسبات يعني اختلاف احتياجات الجمهور وتنوع الخدمات المعروضة؛ وتواجد Party Balloon المنظم في كل مناسبة يضمن أن يكون خيار العميل الأول والبديهي فور التفكير في تنظيم أي احتفال قادم.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 02 — THE INFLUENCERS PLATFORM (+7,000 CREATORS)                           -->
+        <!-- ========================================================================= -->
+        <section id="platform" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-blue/30 text-kaaf-cyanLight font-black text-xs border border-kaaf-blue/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-users text-[11px]"></i>
+                    <span>ثانياً • قوة المنصة</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-mobile-screen-button text-kaaf-cyanLight text-xl"></i>
+                    <span>منصة المشاهير — أكثر من 7,000 مشهور.. خيارات متعددة للوصول لجمهورك</span>
+                </h2>
+            </div>
+
+            <div class="web-card-blue rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-blue/40 shadow-web-card">
+                <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                    تعتمد KAAF Group على منصة رقمية متطورة تضم قاعدة بيانات واسعة تتجاوز <strong>7,000 مشهور ومؤثر موثق داخل المملكة العربية السعودية</strong>. هذه القوة تمنح Party Balloon ميزة الاختيار الدقيق والمدروس، والابتعاد التام عن الحصر التقليدي في مجموعة ضيقة من الأسماء المستهلكة.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-gray-300">
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-database text-base"></i>
+                            <span class="text-white text-xs">قاعدة ضخمة ومتنوعة</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">أكثر من 7,000 مشهور ومؤثر يغطون كافة مناطق ومدن المملكة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-shapes text-base"></i>
+                            <span class="text-white text-xs">تنوع المجالات والاهتمامات</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">مؤثرون في أسلوب الحياة، العائلة، الفعاليات، الترفيه، والديكور.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-bullseye text-base"></i>
+                            <span class="text-white text-xs">استهداف دقيق للجمهور</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">اختيار المؤثرين بناءً على ديموغرافيا واهتمامات المتابعين الفعليين.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-chart-simple text-base"></i>
+                            <span class="text-white text-xs">تنوع أحجام الحسابات</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">مرونة تجمع بين Micro و Macro Influencers لتعظيم الوصول والتفاعل.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-map-location-dot text-base"></i>
+                            <span class="text-white text-xs">توزيع جغرافي ذكي</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">إمكانية توزيع الحملة على مختلف مدن ومناطق المملكة لخدمة فروعكم.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-handshake-simple text-base"></i>
+                            <span class="text-white text-xs">الملاءمة الكاملة لنشاطكم</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">انتقاء الحسابات التي يبدو ظهور تجهيزات الحفلات فيها طبيعياً وجذاباً.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-black/60 border border-white/10 text-xs text-slate-300 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-check text-kaaf-cyanLight text-base mt-0.5 shrink-0"></i>
+                    <div>
+                        <strong class="text-white block mb-0.5">القيمة الجوهرية لمنصة KAAF:</strong>
+                        Party Balloon لا يقتصر على التعامل مع مجموعة محدودة من المشاهير، بل يمتلك فرصة للاختيار من قاعدة واسعة تضم آلاف المؤثرين، للوصول إلى الأسماء والشرائح الأكثر توافقاً مع طبيعة البراند.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 03 — SELECTION CRITERIA FOR INFLUENCERS                                    -->
+        <!-- ========================================================================= -->
+        <section id="criteria" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-purple/30 text-kaaf-purpleLight font-black text-xs border border-kaaf-purple/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-sliders text-[11px]"></i>
+                    <span>ثالثاً • معايير الجودة</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-filter-circle-check text-kaaf-purpleLight text-xl"></i>
+                    <span>مشاهير مناسبون للبراند.. وليس مجرد أرقام متابعين</span>
+                </h2>
+            </div>
+
+            <div class="web-card-purple rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-purple/40 shadow-web-card">
+                <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                    إن نجاح الحملة التسويقية عبر المؤثرين لا يُقاس بعدد المتابعين وحده؛ فالأرقام المجردة قد تكون مضللة إذا غاب التفاعل الحقيقي أو لم تتوافق شريحة المتابعين مع خدمات تجهيز الحفلات. لذا نخضع عملية الاختيار لـ 5 معايير تقييم صارمة:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Criterion 1 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/30 space-y-2">
+                        <div class="flex items-center gap-2 text-kaaf-purpleLight font-bold text-xs">
+                            <i class="fa-solid fa-user-check text-base"></i>
+                            <span class="text-white text-sm">أولاً: عدد المتابعين الحقيقي</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            فحص وتدقيق الحسابات للتأكد من أصالة القاعدة الجماهيرية، وخلوها من المتابعين الوهميين، مع مراجعة مؤشرات النمو الطبيعي للحساب قبل اعتماده.
+                        </p>
+                    </div>
+
+                    <!-- Criterion 2 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/30 space-y-2">
+                        <div class="flex items-center gap-2 text-kaaf-purpleLight font-bold text-xs">
+                            <i class="fa-solid fa-chart-line-up text-base"></i>
+                            <span class="text-white text-sm">ثانياً: نسب التفاعل الحقيقية</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            مراعاة معدلات التفاعل (Engagement Rate)، ونسب مشاهدة اليوميات (Story Views)، ومدى اهتمام وتجاوب الجمهور مع التوصيات، بدلاً من الانخداع بأرقام المتابعة السطحية.
+                        </p>
+                    </div>
+
+                    <!-- Criterion 3 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/30 space-y-2">
+                        <div class="flex items-center gap-2 text-kaaf-purpleLight font-bold text-xs">
+                            <i class="fa-solid fa-icons text-base"></i>
+                            <span class="text-white text-sm">ثالثاً: تنوع المجالات والتخصصات</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            انتقاء مشاهير من مجالات ذات صلة مباشرة بعالم الاحتفال، مثل: اللايف ستايل والحياة اليومية، العائلة والأمومة، الموضة والجمال، الترفيه، والمناسبات وصناع المحتوى المحليين.
+                        </p>
+                    </div>
+
+                    <!-- Criterion 4 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/30 space-y-2">
+                        <div class="flex items-center gap-2 text-kaaf-purpleLight font-bold text-xs">
+                            <i class="fa-solid fa-people-roof text-base"></i>
+                            <span class="text-white text-sm">رابعاً: ملاءمة الجمهور المستهدف</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            التأكد من أن الشريحة الأكبر من متابعي المشهور تقع ضمن الفئات الأكثر طلباً لخدمات Party Balloon (الأمهات، العائلات، المنظمين، والشباب الراغبين في تجهيز مناسباتهم).
+                        </p>
+                    </div>
+
+                    <!-- Criterion 5 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/30 space-y-2 md:col-span-2 lg:col-span-2">
+                        <div class="flex items-center gap-2 text-kaaf-purpleLight font-bold text-xs">
+                            <i class="fa-solid fa-camera-viewfinder text-base"></i>
+                            <span class="text-white text-sm">خامساً: تقديم البراند بصورة احترافية وواقعية</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            الحرص على أن يظهر Party Balloon بشكل جذاب ومبهر من خلال محتوى عفوي وواقعي يعرض جمال التجهيزات والتفاصيل وتناسق ألوان البالونات، وليس مجرد إعلان تجاري تقليدي جامد ينفر منه المتابع.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 04 — PROPOSED STRATEGY: 20 INFLUENCERS OVER MULTIPLE SEASONS             -->
+        <!-- ========================================================================= -->
+        <section id="strategy" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-pinkBalloon/20 text-kaaf-pinkBalloonLight font-black text-xs border border-kaaf-pinkBalloon/40 flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+                    <span>رابعاً • جوهر الخطة</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-users-rays text-kaaf-pinkBalloon text-xl"></i>
+                    <span>الاستراتيجية المقترحة — 20 مشهوراً على مدار عدة مناسبات</span>
+                </h2>
+            </div>
+
+            <!-- Campaign Distribution Timeline Card -->
+            <div class="web-card-pink rounded-3xl p-6 sm:p-10 space-y-8 border-2 border-kaaf-pinkBalloon/40 shadow-glow-pink">
+                <div class="text-center max-w-3xl mx-auto space-y-2">
+                    <h3 class="text-xl sm:text-2xl font-black text-white font-ibm">
+                        خطة توزيع ذكية: انتشار مستمر وتنوع في الشرائح
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
+                        الفكرة ليست نشر 20 إعلاناً بشكل عشوائي أو تكديسها في وقت واحد؛ بل <strong>توزيع الـ 20 مشهوراً وفق خطة تسويقية تستثمر تعدد المناسبات القادمة</strong> للحفاظ على ظهور Party Balloon بشكل متكرر وتوسيع قاعدة العملاء.
+                    </p>
+                </div>
+
+                <!-- Strategic Inclusions List -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-gray-300">
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>توزيع المشاهير على المناسبات المختلفة.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>اختيار طبيعة المحتوى المناسب لكل موسم.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>مراعاة اختلاف الجمهور المستهدف من مناسبة لأخرى.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>تنويع أساليب عرض البراند وتفاصيل التجهيزات.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>المحافظة على ظهور متكرر يرسخ اسم البراند.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                        <i class="fa-solid fa-check text-kaaf-pinkBalloon"></i>
+                        <span>فتح باب لجمهور جديد في كل مناسبة.</span>
+                    </div>
+                </div>
+
+                <!-- Visual Distribution Model -->
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                        <span class="text-xs font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-kaaf-gold"></i>
+                            <span>نموذج تخطيطي لتوزيع الـ 20 مشهوراً على المواسم الخمسة:</span>
+                        </span>
+                        <span class="text-xs font-black text-kaaf-gold font-ibm">Total: 20 Influencers</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-3.5 text-center">
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-blue/50 space-y-2">
+                            <span class="text-[11px] font-bold text-kaaf-cyanLight block">موسم 01</span>
+                            <div class="text-2xl font-black text-white font-ibm">4 مشاهير</div>
+                            <span class="text-xs text-gray-300 block font-bold">الجمعة البيضاء</span>
+                            <p class="text-[10px] text-gray-400">عروض وخصومات وباقات الحجز.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-pinkBalloon/50 space-y-2">
+                            <span class="text-[11px] font-bold text-kaaf-pinkBalloonLight block">موسم 02</span>
+                            <div class="text-2xl font-black text-white font-ibm">4 مشاهير</div>
+                            <span class="text-xs text-gray-300 block font-bold">نهاية العام</span>
+                            <p class="text-[10px] text-gray-400">ديكورات وتجهيزات الحفلات الخاصة.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-gold/50 space-y-2">
+                            <span class="text-[11px] font-bold text-kaaf-gold block">موسم 03</span>
+                            <div class="text-2xl font-black text-white font-ibm">4 مشاهير</div>
+                            <span class="text-xs text-gray-300 block font-bold">يوم التأسيس</span>
+                            <p class="text-[10px] text-gray-400">أجواء واحتفالات الهوية الوطنية.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/50 space-y-2">
+                            <span class="text-[11px] font-bold text-kaaf-purpleLight block">موسم 04</span>
+                            <div class="text-2xl font-black text-white font-ibm">4 مشاهير</div>
+                            <span class="text-xs text-gray-300 block font-bold">شهر رمضان</span>
+                            <p class="text-[10px] text-gray-400">غبقات عائلية واستقبالات فاخرة.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-emerald-500/50 space-y-2">
+                            <span class="text-[11px] font-bold text-emerald-400 block">موسم 05</span>
+                            <div class="text-2xl font-black text-white font-ibm">4 مشاهير</div>
+                            <span class="text-xs text-gray-300 block font-bold">عيد الفطر</span>
+                            <p class="text-[10px] text-gray-400">احتفالات العيد وفرحة العائلات.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-black/60 border border-white/10 text-xs text-gray-400 text-center">
+                        * إيضاح تنظيمي: هذا النموذج التوزيعي هو مخطط استراتيجي لتوضيح الفكرة، والتوزيع النهائي قابل للتعديل والمرونة وفق مواعيد التعاقد وتوقيتات المناسبات وتوافر المؤثرين المناسبين.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 05 — THE MARKETING IMPACT CYCLE (FUNNEL)                                   -->
+        <!-- ========================================================================= -->
+        <section id="funnel" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-gold/30 text-kaaf-goldLight font-black text-xs border border-kaaf-gold/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrows-spin text-[11px]"></i>
+                    <span>خامساً • دورة التأثير</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-filter text-kaaf-gold text-xl"></i>
+                    <span>كيف تحقق هذه الاستراتيجية أقصى استفادة لـ Party Balloon؟</span>
+                </h2>
+            </div>
+
+            <div class="web-card-gold rounded-3xl p-6 sm:p-10 space-y-8 border-2 border-kaaf-gold/40 shadow-glow-gold">
+                <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                    تعمل الحملة عبر خمس مراحل متتالية في دورة التأثير التسويقي (Impact Cycle)، لتضمن تحويل المشاهدات إلى علاقات تجارية وحجوزات فعلية:
+                </p>
+
+                <!-- 5 Impact Stages Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5 text-center text-xs">
+                    <!-- Stage 1 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-blue/50 space-y-2 flex flex-col justify-between hover:border-kaaf-cyan transition">
+                        <div class="space-y-2">
+                            <span class="w-8 h-8 rounded-full bg-kaaf-blue/40 text-kaaf-cyanLight flex items-center justify-center mx-auto font-bold text-xs border border-kaaf-blue/60">01</span>
+                            <h4 class="text-xs font-black text-white">المرحلة الأولى: الوعي (Awareness)</h4>
+                            <p class="text-[11px] text-gray-300 leading-relaxed">
+                                تعريف آلاف المتابعين الجدد باسم Party Balloon وخدماته وتثبيت الهوية البصرية للبراند في الأذهان.
+                            </p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-cyanLight font-mono pt-2 border-t border-white/10">Brand Discovery</div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-pinkBalloon/50 space-y-2 flex flex-col justify-between hover:border-kaaf-pinkBalloon transition">
+                        <div class="space-y-2">
+                            <span class="w-8 h-8 rounded-full bg-kaaf-pinkBalloon/30 text-kaaf-pinkBalloonLight flex items-center justify-center mx-auto font-bold text-xs border border-kaaf-pinkBalloon/50">02</span>
+                            <h4 class="text-xs font-black text-white">المرحلة الثانية: الاهتمام (Interest)</h4>
+                            <p class="text-[11px] text-gray-300 leading-relaxed">
+                                إظهار نماذج التجهيزات الواقعية والأفكار الإبداعية للمناسبات، مما يثير إعجاب الجمهور ويحفزه على الاستفسار.
+                            </p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-pinkBalloonLight font-mono pt-2 border-t border-white/10">Creative Interest</div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-gold/50 space-y-2 flex flex-col justify-between hover:border-kaaf-gold transition">
+                        <div class="space-y-2">
+                            <span class="w-8 h-8 rounded-full bg-kaaf-gold/20 text-kaaf-gold flex items-center justify-center mx-auto font-bold text-xs border border-kaaf-gold/40">03</span>
+                            <h4 class="text-xs font-black text-white">المرحلة الثالثة: التفضيل (Consideration)</h4>
+                            <p class="text-[11px] text-gray-300 leading-relaxed">
+                                تعزيز ثقة المتابعين من خلال تجارب المشاهير واستعراض جودة البالونات وتناسق الألوان ودقة التنفيذ.
+                            </p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-gold font-mono pt-2 border-t border-white/10">Trust & Preference</div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-emerald-500/50 space-y-2 flex flex-col justify-between hover:border-emerald-400 transition bg-emerald-950/20">
+                        <div class="space-y-2">
+                            <span class="w-8 h-8 rounded-full bg-emerald-900/40 text-emerald-400 flex items-center justify-center mx-auto font-bold text-xs border border-emerald-500/40">04</span>
+                            <h4 class="text-xs font-black text-white">المرحلة الرابعة: التحويل (Conversion)</h4>
+                            <p class="text-[11px] text-gray-300 leading-relaxed">
+                                توجيه المتابعين مباشرة لحسابات التواصل ورقم الواتساب للاستفسار وحجز الباقات وتحويل الاهتمام إلى صفقات.
+                            </p>
+                        </div>
+                        <div class="text-[10px] text-emerald-400 font-mono pt-2 border-t border-white/10">Action & Booking</div>
+                    </div>
+
+                    <!-- Stage 5 -->
+                    <div class="p-5 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/50 space-y-2 flex flex-col justify-between hover:border-kaaf-purpleLight transition">
+                        <div class="space-y-2">
+                            <span class="w-8 h-8 rounded-full bg-kaaf-purple/30 text-kaaf-purpleLight flex items-center justify-center mx-auto font-bold text-xs border border-kaaf-purple/50">05</span>
+                            <h4 class="text-xs font-black text-white">المرحلة الخامسة: التكرار (Exposure)</h4>
+                            <p class="text-[11px] text-gray-300 leading-relaxed">
+                                تكرار ظهور البراند خلال مناسبات متتالية يعزز تذكر العلامة ويزيد فرص وصولها لعملاء جدد في كل مناسبة.
+                            </p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-purpleLight font-mono pt-2 border-t border-white/10">Repeated Recall</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-black/60 border border-white/10 text-xs sm:text-sm text-amber-100 text-center font-bold">
+                    «كل مناسبة تفتح بابًا لجمهور جديد، وكل ظهور احترافي يعزز فرصة اختيار Party Balloon عند التخطيط للاحتفال القادم».
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 06 — GUARANTEES & INVESTMENT PROTECTION                                   -->
+        <!-- ========================================================================= -->
+        <section id="guarantees" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 font-black text-xs border border-emerald-500/40 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-[11px]"></i>
+                    <span>سادساً • حماية الاستثمار</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-certificate text-emerald-400 text-xl"></i>
+                    <span>استثمار تسويقي مدروس.. مع آلية واضحة لمتابعة النتائج</span>
+                </h2>
+            </div>
+
+            <div class="relative overflow-hidden rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-kaaf-greenDeep via-kaaf-darkSlate to-kaaf-cardBg border-2 border-emerald-400 shadow-glow-green space-y-8">
+                <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+                <div class="max-w-3xl space-y-2">
+                    <h3 class="text-xl sm:text-2xl font-black text-white">ضمانات العمل والالتزام المؤسسي لـ KAAF Group</h3>
+                    <p class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-medium">
+                        نحرص على أن يكون استثمار Party Balloon التسويقي محمياً بمنهجية تعاقدية منضبطة وواضحة:
+                    </p>
+                </div>
+
+                <!-- 5 Guarantees Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs text-gray-300">
+                    <div class="p-5 rounded-2xl bg-black/60 border border-emerald-500/40 space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-hashtag text-base"></i>
+                            <span class="text-white text-xs">1. ضمان عدد المشاهير (20 مشهوراً)</span>
+                        </div>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">الالتزام الصريح بتنفيذ الحملة عبر 20 مشهوراً وفق الأسماء والاتفاقات المعتمدة مع العميل.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-black/60 border border-emerald-500/40 space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-video text-base"></i>
+                            <span class="text-white text-xs">2. ضمان تنفيذ النشر والتغطيات</span>
+                        </div>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">التأكد من التزام المؤثرين بجدول النشر وبث التغطيات المتفق عليها وتوثيق الروابط واللقطات.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-black/60 border border-emerald-500/40 space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-filter-circle-check text-base"></i>
+                            <span class="text-white text-xs">3. ضمان جودة الاختيار والملاءمة</span>
+                        </div>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">انتقاء الحسابات وفق معايير دقيقة لملاءمة الجمهور المستهدف ومؤشرات التفاعل الحقيقي.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-black/60 border border-emerald-500/40 space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-chart-column text-base"></i>
+                            <span class="text-white text-xs">4. ضمان متابعة الأداء والتقارير</span>
+                        </div>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">متابعة نتائج الحملة وجمع إحصاءات الوصول والمشاهدات المتاحة وتزويد الإدارة بها بانتظام.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-black/60 border border-emerald-500/40 space-y-2 md:col-span-2 lg:col-span-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-scale-balanced text-base"></i>
+                            <span class="text-white text-xs">5. ضمان معالجة عدم تحقيق النتائج المتفق عليها</span>
+                        </div>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">في حال عدم تحقيق النتائج المستهدفة المتفق عليها، يتم مراجعة أداء الحملة وتحديد أسباب القصور، والعمل على تقديم معالجة مناسبة وفق شروط وضوابط واضحة يتم الاتفاق عليها تعاقدياً.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-black/70 border border-white/10 text-xs text-gray-300">
+                    * توضيح مهني: ينصب ضمان KAAF على دقة التنفيذ وجودة المؤثرين المعتمدين وتوثيق النشر؛ وتأكيداً على المصداقية، لا يقدم العرض ضمانات بمبيعات أو حجوزات قطعية محددة نظراً لارتباط ذلك بجاذبية العروض والأسعار المباشرة للعملاء.
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 07 — MARKETING INVESTMENT & PACKAGE PRICING                               -->
+        <!-- ========================================================================= -->
+        <section id="pricing" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-kaaf-pinkBalloon/20 border border-kaaf-pinkBalloon/50 text-kaaf-pinkBalloonLight text-xs font-black">
+                    <i class="fa-solid fa-tag text-kaaf-pinkBalloon"></i>
+                    <span>سابعاً • الاستثمار التسويقي المعتمد</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">باقة المشاهير (Influencer Marketing Package)</h2>
+                <p class="text-xs sm:text-sm text-gray-300">استثمار شامل ومحدد يغطي 20 مشهوراً عبر المواسم الاحتفالية الخمسة القادمة</p>
+            </div>
+
+            <!-- Prominent Premium Pricing Card -->
+            <div class="max-w-4xl mx-auto">
+                <div class="web-card-pink rounded-3xl p-8 sm:p-12 shadow-glow-pink border-2 border-kaaf-pinkBalloon relative overflow-hidden space-y-8">
+                    <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10">
+                        <div class="space-y-2 text-center md:text-right">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-black border border-emerald-500/40 inline-flex items-center gap-1.5">
+                                <i class="fa-solid fa-check-double"></i> Campaign Package
+                            </span>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white font-ibm">
+                                باقة المؤثرين المتكاملة – Influencer Marketing Package
+                            </h3>
+                            <div class="text-xs sm:text-sm font-bold text-kaaf-goldLight font-mono">
+                                20 Influencers | 5 Seasonal Opportunities | 1 Strategic Campaign
+                            </div>
+                        </div>
+
+                        <!-- Price Tag Box -->
+                        <div class="shrink-0 bg-black/85 border-2 border-kaaf-gold rounded-3xl p-6 text-center space-y-1 min-w-[240px] shadow-2xl">
+                            <span class="text-xs font-bold text-gray-400 block">السعر الإجمالي للباقة</span>
+                            <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-kaaf-goldLight via-yellow-200 to-kaaf-gold font-ibm tracking-tight">
+                                7,000 <span class="text-2xl text-kaaf-gold font-cairo">SAR</span>
+                            </div>
+                            <span class="text-xs text-gray-300 font-bold block pt-1">فقط سبعة آلاف ريال سعودي لا غير</span>
+                        </div>
+                    </div>
+
+                    <!-- Package Inclusions List -->
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-white block">مشتملات باقة المشاهير لـ Party Balloon:</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-300">
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>اختيار 20 مشهوراً من قاعدة تضم أكثر من 7,000 مشهور على مستوى المملكة.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>تنوع المجالات والتخصصات بما يتناسب مع نشاط تجهيز الحفلات والمناسبات.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>مراعاة عدد المتابعين الحقيقي ومؤشرات التفاعل والوصول الفعلي لكل حساب.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>اختيار الأسماء والشرائح الأنسب لطبيعة كل موسم ومناسبة قادمة.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>توزيع الحملة استراتيجياً على المواسم الخمسة لتحقيق ظهور متكرر ومستدام.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>تقديم Party Balloon بصورة احترافية وجذابة أمام جماهير المؤثرين.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>متابعة وتنسيق تنفيذ النشر والتغطيات مع المشاهير في المواعيد المحددة.</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-kaaf-pinkBalloon mt-0.5"></i>
+                                <span>جمع وتحليل التقارير ومؤشرات الأداء المتاحة بعد كل تغطية.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Clarity Note -->
+                    <div class="p-4 rounded-2xl bg-black/60 border border-kaaf-pinkBalloon/30 text-xs text-slate-300 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-info text-kaaf-pinkBalloon text-base shrink-0"></i>
+                        <span>السعر الموضح (7,000 ريال سعودي) هو السعر الإجمالي الشامل لكافة خدمات الباقة والـ 20 مشهوراً، دون إضافة أي تكاليف أو رسوم خفية غير مذكورة.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 08 — WHY KAAF GROUP?                                                      -->
+        <!-- ========================================================================= -->
+        <section id="why-kaaf" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-blue/30 text-kaaf-cyanLight font-black text-xs border border-kaaf-blue/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-award text-[11px]"></i>
+                    <span>ثامناً • شريكك الاستراتيجي</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-handshake text-kaaf-cyanLight text-xl"></i>
+                    <span>لماذا KAAF Group؟ — شريك في بناء الحملات وليس مجرد وسيط إعلاني</span>
+                </h2>
+            </div>
+
+            <div class="web-card-blue rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-blue/40 shadow-web-card">
+                <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                    نقدم أنفسنا لـ <strong>Party Balloon</strong> باعتبارنا شريكاً استراتيجياً متكاملاً لتخطيط وبناء الحملات المؤثرة، وليس مجرد مكتب وساطة لإجراء التعاقدات:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-gray-300">
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-pen-ruler text-base"></i>
+                            <span class="text-white text-xs">تخطيط الحملة وفق النشاط</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">تصميم محتوى وسيناريوهات تناسب جماليات البالونات وأجواء الفرح.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-user-check text-base"></i>
+                            <span class="text-white text-xs">انتقاء دقيق للمؤثرين</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">اختيار الأسماء الأكثر ملاءمة للجمهور الذي يطلب تجهيزات الحفلات بالفعل.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-calendar-check text-base"></i>
+                            <span class="text-white text-xs">فهم فرص المواسم القادمة</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">اقتناص التوقيت الذهبي قبل كل مناسبة لضمان فتح باب الحجوزات المبكرة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-sitemap text-base"></i>
+                            <span class="text-white text-xs">توزيع استراتيجي للظهور</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">منهجية توزيع متزنة تضمن حضوراً متكرراً للبراند بدلاً من ومضة إعلانية عابرة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-camera-retro text-base"></i>
+                            <span class="text-white text-xs">حماية هيبة وصورة البراند</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">الاهتمام بزوايا التصوير ووضوح التفاصيل لتقديم Party Balloon بأبهى حلة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                        <div class="flex items-center gap-2 text-kaaf-cyanLight font-bold">
+                            <i class="fa-solid fa-chart-line-up text-base"></i>
+                            <span class="text-white text-xs">متابعة التنفيذ وتحليل الأداء</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">إدارة كاملة للتنسيق والتواصل وجمع تقارير المشاهدات والأثر التسويقي.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 09 — CONCLUSION & CALL TO STRATEGIC PARTNERSHIP                           -->
+        <!-- ========================================================================= -->
+        <section id="conclusion" class="relative rounded-[32px] overflow-hidden p-8 sm:p-14 bg-gradient-to-br from-kaaf-blueDeep via-kaaf-darkSlate to-kaaf-dark border border-kaaf-pinkBalloon/40 text-center space-y-8 shadow-web-card">
+            <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-kaaf-pinkBalloon shadow-glow-pink mx-auto p-0.5 bg-black">
+                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                </div>
+
+                <span class="text-xs font-bold text-kaaf-pinkBalloonLight font-mono uppercase tracking-widest block">KAAF Group × Party Balloon • Strategic Partnership</span>
+
+                <h3 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+                    المناسبات تتغير.. لكن فرص نمو Party Balloon مستمرة
+                </h3>
+
+                <p class="text-sm sm:text-base text-gray-200 leading-relaxed font-medium">
+                    «يمتلك <strong>Party Balloon</strong> فرصة مميزة للاستفادة من تعدد المناسبات خلال الفترة القادمة، وتحويل كل موسم إلى فرصة جديدة لتعريف الجمهور بالبراند وخدماته.
+                </p>
+                <p class="text-sm sm:text-base text-gray-200 leading-relaxed font-medium">
+                    ومن خلال منصة المشاهير، يمكن الوصول إلى شرائح متنوعة من الجمهور عبر اختيار <strong>20 مشهوراً من قاعدة تضم أكثر من 7,000 مؤثر</strong> على مستوى المملكة، مع توزيع الظهور على المناسبات المختلفة، وتقديم البراند بصورة احترافية تعزز فرص الاستفسارات والحجوزات.
+                </p>
+                <p class="text-xs sm:text-sm text-kaaf-goldLight font-bold">
+                    دعونا نجعل كل مناسبة فرصة جديدة لانتشار Party Balloon».
+                </p>
+
+                <div class="pt-2 text-lg sm:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-kaaf-pinkBalloon via-rose-300 to-kaaf-goldLight font-ibm">
+                    KAAF Group – Your Partner in Strategic Marketing & Growth.
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/966537553910" target="_blank" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-kaaf-pinkBalloon to-kaaf-gold text-slate-950 font-black text-xs shadow-xl flex items-center gap-2 hover:brightness-110 transition">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>مناقشة بدء الحملة وتأكيد اعتماد باقة المشاهير</span>
+                </a>
+                <a href="https://kaafmarketing.sa/" target="_blank" class="px-6 py-3.5 rounded-2xl bg-kaaf-dark border border-kaaf-border text-white font-bold text-xs hover:border-kaaf-cyan transition flex items-center gap-2">
+                    <i class="fa-solid fa-globe text-kaaf-cyanLight"></i>
+                    <span>الموقع الرسمي: kaafmarketing.sa</span>
+                </a>
+            </div>
+
+            <!-- Formal Signatures Box -->
+            <div class="pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6 text-right text-xs text-gray-400">
+                <div class="space-y-1">
+                    <span class="text-white font-bold block text-sm">مقدم العرض:</span>
+                    <p class="text-gray-300 font-bold">KAAF Group for Marketing, Software & Media Solutions</p>
+                    <p>مجموعة كاف لحلول التسويق والبرمجيات والحلول الإعلامية</p>
+                    <p class="font-mono text-gray-500">المملكة العربية السعودية • الرياض</p>
+                </div>
+                <div class="space-y-1 md:text-left">
+                    <span class="text-white font-bold block text-sm">الموجه إليه العرض:</span>
+                    <p class="text-gray-300 font-bold">Party Balloon – بارتي بالون</p>
+                    <p>الاسم والصفة: ................................................................</p>
+                    <p>التوقيع والختم: ................................................</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Ambient Canvas Script -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('interactive-bg-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            const particleCount = 42;
+            const colors = ['#0A4C86', '#06B6D4', '#00875A', '#FF4081', '#D4AF37', '#7C3AED'];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resize);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.7;
+                    this.vy = (Math.random() - 0.5) * 0.7;
+                    this.radius = Math.random() * 2.2 + 1;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.alpha = Math.random() * 0.35 + 0.2;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                resize();
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function connect() {
+                const maxDist = 130;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a + 1; b < particles.length; b++) {
+                        let dx = particles[a].x - particles[b].x;
+                        let dy = particles[a].y - particles[b].y;
+                        let dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < maxDist) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.strokeStyle = '#FF4081';
+                            ctx.globalAlpha = (1 - (dist / maxDist)) * 0.18;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.globalAlpha = 1;
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            window.onload = function() {
+                init();
+                animate();
+            };
+        })();
+    </script>
+</body>
+</html>
